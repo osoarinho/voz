@@ -1,561 +1,893 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Soarinho | Locução e Dublagem Profissional</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
     <style>
-        :root {
-            --primary-color: #0a0a0a;
-            --secondary-color: #1a1a1a;
-            --accent-color: #f5f5f5;
-            --text-color: #e0e0e0;
-            --highlight-color: #4a4a4a;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        
-        body {
-            background-color: var(--primary-color);
-            color: var(--text-color);
-            overflow-x: hidden;
-        }
-        
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 20% 50%, rgba(74, 74, 74, 0.1) 0%, transparent 50%);
-        }
-        
-        .hero-content {
-            z-index: 1;
-        }
-        
+      :root {
+        --primary-color: #0a0a0a;
+        --secondary-color: #1a1a1a;
+        --accent-color: #f5f5f5;
+        --text-color: #e0e0e0;
+        --highlight-color: #4a4a4a;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        background-color: var(--primary-color);
+        color: var(--text-color);
+        overflow-x: hidden;
+      }
+
+      /* Hero Section */
+      .hero {
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          var(--secondary-color) 100%
+        );
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: radial-gradient(
+          circle at 20% 50%,
+          rgba(74, 74, 74, 0.1) 0%,
+          transparent 50%
+        );
+      }
+
+      .hero-content {
+        z-index: 1;
+      }
+
+      .hero h1 {
+        font-size: 3.5rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        color: var(--accent-color);
+      }
+
+      .hero p {
+        font-size: 1.25rem;
+        margin-bottom: 2rem;
+        max-width: 600px;
+      }
+
+      .btn-primary-custom {
+        background-color: transparent;
+        color: var(--accent-color);
+        border: 2px solid var(--accent-color);
+        padding: 12px 30px;
+        border-radius: 30px;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+        margin-right: 15px;
+        margin-bottom: 10px;
+      }
+
+      .btn-primary-custom:hover {
+        background-color: var(--accent-color);
+        color: var(--primary-color);
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Sections */
+      section {
+        padding: 100px 0;
+      }
+
+      .section-title {
+        font-size: 2.5rem;
+        margin-bottom: 3rem;
+        text-align: center;
+        color: var(--accent-color);
+        position: relative;
+      }
+
+      .section-title::after {
+        content: "";
+        display: block;
+        width: 80px;
+        height: 3px;
+        background-color: var(--accent-color);
+        margin: 15px auto;
+      }
+
+      /* Voice Demos */
+      .demo-player {
+        background-color: var(--secondary-color);
+        border-radius: 10px;
+        padding: 25px;
+        margin-bottom: 30px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border-left: 4px solid var(--accent-color);
+      }
+
+      .demo-player:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      }
+
+      .demo-title {
+        font-size: 1.25rem;
+        margin-bottom: 15px;
+        color: var(--accent-color);
+      }
+
+      .audio-player {
+        width: 100%;
+        margin-top: 15px;
+        background-color: var(--primary-color);
+        border-radius: 30px;
+        overflow: hidden;
+      }
+
+      /* Services */
+      .service-card {
+        background-color: var(--secondary-color);
+        border-radius: 10px;
+        padding: 30px;
+        height: 100%;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border-top: 4px solid transparent;
+      }
+
+      .service-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        border-top: 4px solid var(--accent-color);
+      }
+
+      .service-icon {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        color: var(--accent-color);
+      }
+
+      .service-title {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+        color: var(--accent-color);
+      }
+
+      /* Testimonials */
+      .testimonial-carousel {
+        padding: 30px 0;
+      }
+
+      .testimonial-card {
+        background-color: var(--secondary-color);
+        border-radius: 10px;
+        padding: 30px;
+        margin: 0 15px;
+        text-align: center;
+        border-left: 4px solid var(--accent-color);
+      }
+
+      .testimonial-text {
+        font-style: italic;
+        margin-bottom: 20px;
+        position: relative;
+      }
+
+      .testimonial-text::before,
+      .testimonial-text::after {
+        content: '"';
+        font-size: 2rem;
+        color: var(--highlight-color);
+        position: absolute;
+      }
+
+      .testimonial-text::before {
+        top: -10px;
+        left: -10px;
+      }
+
+      .testimonial-text::after {
+        bottom: -20px;
+        right: -10px;
+      }
+
+      .testimonial-author {
+        font-weight: 600;
+        color: var(--accent-color);
+      }
+
+      .testimonial-role {
+        font-size: 0.9rem;
+        color: var(--highlight-color);
+      }
+
+      .carousel-control-prev,
+      .carousel-control-next {
+        width: 5%;
+      }
+
+      /* CTA Section */
+      .cta-section {
+        background: linear-gradient(
+          135deg,
+          var(--secondary-color) 0%,
+          var(--primary-color) 100%
+        );
+        text-align: center;
+        padding: 80px 0;
+      }
+
+      .cta-title {
+        font-size: 2.5rem;
+        margin-bottom: 1.5rem;
+        color: var(--accent-color);
+      }
+
+      .cta-description {
+        font-size: 1.2rem;
+        margin-bottom: 2.5rem;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .whatsapp-btn {
+        background-color: #25d366;
+        color: white;
+        padding: 15px 40px;
+        border-radius: 30px;
+        font-weight: 600;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        transition: all 0.3s ease;
+      }
+
+      .whatsapp-btn:hover {
+        background-color: #128c7e;
+        color: white;
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      }
+
+      .whatsapp-btn i {
+        margin-right: 10px;
+        font-size: 1.2rem;
+      }
+
+      /* Footer */
+      footer {
+        background-color: var(--secondary-color);
+        padding: 40px 0 20px;
+      }
+
+      .footer-logo {
+        font-size: 1.8rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        color: var(--accent-color);
+      }
+
+      .footer-links a {
+        color: var(--text-color);
+        text-decoration: none;
+        margin-right: 20px;
+        transition: color 0.3s ease;
+      }
+
+      .footer-links a:hover {
+        color: var(--accent-color);
+      }
+
+      .social-icons a {
+        color: var(--text-color);
+        font-size: 1.2rem;
+        margin-right: 15px;
+        transition: color 0.3s ease;
+      }
+
+      .social-icons a:hover {
+        color: var(--accent-color);
+      }
+
+      .copyright {
+        margin-top: 30px;
+        padding-top: 20px;
+        border-top: 1px solid var(--highlight-color);
+        font-size: 0.9rem;
+        color: var(--highlight-color);
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
         .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            color: var(--accent-color);
+          font-size: 2.5rem;
         }
-        
-        .hero p {
-            font-size: 1.25rem;
-            margin-bottom: 2rem;
-            max-width: 600px;
-        }
-        
-        .btn-primary-custom {
-            background-color: transparent;
-            color: var(--accent-color);
-            border: 2px solid var(--accent-color);
-            padding: 12px 30px;
-            border-radius: 30px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-            margin-right: 15px;
-            margin-bottom: 10px;
-        }
-        
-        .btn-primary-custom:hover {
-            background-color: var(--accent-color);
-            color: var(--primary-color);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-        
-        /* Sections */
-        section {
-            padding: 100px 0;
-        }
-        
+
         .section-title {
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            text-align: center;
-            color: var(--accent-color);
-            position: relative;
+          font-size: 2rem;
         }
-        
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 3px;
-            background-color: var(--accent-color);
-            margin: 15px auto;
+
+        .btn-primary-custom {
+          display: block;
+          margin-right: 0;
+          text-align: center;
         }
-        
-        /* Voice Demos */
-        .demo-player {
-            background-color: var(--secondary-color);
-            border-radius: 10px;
-            padding: 25px;
-            margin-bottom: 30px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border-left: 4px solid var(--accent-color);
-        }
-        
-        .demo-player:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-        }
-        
-        .demo-title {
-            font-size: 1.25rem;
-            margin-bottom: 15px;
-            color: var(--accent-color);
-        }
-        
-        .audio-player {
-            width: 100%;
-            margin-top: 15px;
-            background-color: var(--primary-color);
-            border-radius: 30px;
-            overflow: hidden;
-        }
-        
-        /* Services */
-        .service-card {
-            background-color: var(--secondary-color);
-            border-radius: 10px;
-            padding: 30px;
-            height: 100%;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border-top: 4px solid transparent;
-        }
-        
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
-            border-top: 4px solid var(--accent-color);
-        }
-        
-        .service-icon {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            color: var(--accent-color);
-        }
-        
-        .service-title {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: var(--accent-color);
-        }
-        
-        /* Testimonials */
-        .testimonial-carousel {
-            padding: 30px 0;
-        }
-        
-        .testimonial-card {
-            background-color: var(--secondary-color);
-            border-radius: 10px;
-            padding: 30px;
-            margin: 0 15px;
-            text-align: center;
-            border-left: 4px solid var(--accent-color);
-        }
-        
-        .testimonial-text {
-            font-style: italic;
-            margin-bottom: 20px;
-            position: relative;
-        }
-        
-        .testimonial-text::before, .testimonial-text::after {
-            content: '"';
-            font-size: 2rem;
-            color: var(--highlight-color);
-            position: absolute;
-        }
-        
-        .testimonial-text::before {
-            top: -10px;
-            left: -10px;
-        }
-        
-        .testimonial-text::after {
-            bottom: -20px;
-            right: -10px;
-        }
-        
-        .testimonial-author {
-            font-weight: 600;
-            color: var(--accent-color);
-        }
-        
-        .testimonial-role {
-            font-size: 0.9rem;
-            color: var(--highlight-color);
-        }
-        
-        .carousel-control-prev, .carousel-control-next {
-            width: 5%;
-        }
-        
-        /* CTA Section */
-        .cta-section {
-            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--primary-color) 100%);
-            text-align: center;
-            padding: 80px 0;
-        }
-        
-        .cta-title {
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
-            color: var(--accent-color);
-        }
-        
-        .cta-description {
-            font-size: 1.2rem;
-            margin-bottom: 2.5rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .whatsapp-btn {
-            background-color: #25D366;
-            color: white;
-            padding: 15px 40px;
-            border-radius: 30px;
-            font-weight: 600;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            transition: all 0.3s ease;
-        }
-        
-        .whatsapp-btn:hover {
-            background-color: #128C7E;
-            color: white;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-        
-        .whatsapp-btn i {
-            margin-right: 10px;
-            font-size: 1.2rem;
-        }
-        
-        /* Footer */
-        footer {
-            background-color: var(--secondary-color);
-            padding: 40px 0 20px;
-        }
-        
-        .footer-logo {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 20px;
-            color: var(--accent-color);
-        }
-        
-        .footer-links a {
-            color: var(--text-color);
-            text-decoration: none;
-            margin-right: 20px;
-            transition: color 0.3s ease;
-        }
-        
-        .footer-links a:hover {
-            color: var(--accent-color);
-        }
-        
-        .social-icons a {
-            color: var(--text-color);
-            font-size: 1.2rem;
-            margin-right: 15px;
-            transition: color 0.3s ease;
-        }
-        
-        .social-icons a:hover {
-            color: var(--accent-color);
-        }
-        
-        .copyright {
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 1px solid var(--highlight-color);
-            font-size: 0.9rem;
-            color: var(--highlight-color);
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .btn-primary-custom {
-                display: block;
-                margin-right: 0;
-                text-align: center;
-            }
-        }
+      }
     </style>
-</head>
-<body>
+
+    <style>
+      .dublagens-section {
+        padding: 80px 0;
+        background: linear-gradient(
+          135deg,
+          var(--secondary-color) 0%,
+          var(--primary-color) 100%
+        );
+      }
+
+      .section-subtitle {
+        color: var(--text-color);
+        font-size: 1.1rem;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .video-container {
+        background-color: var(--secondary-color);
+        border-radius: 15px;
+        padding: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s ease;
+      }
+
+      .video-container:hover {
+        transform: translateY(-5px);
+      }
+
+      .video-title {
+        color: var(--accent-color);
+        font-size: 1.3rem;
+        margin-bottom: 10px;
+      }
+
+      .video-description {
+        color: var(--text-color);
+        font-size: 0.95rem;
+      }
+
+      .carousel-indicators {
+        bottom: -50px;
+      }
+
+      .carousel-indicators button {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background-color: var(--highlight-color);
+        border: 2px solid var(--highlight-color);
+      }
+
+      .carousel-indicators button.active {
+        background-color: var(--accent-color);
+        border-color: var(--accent-color);
+      }
+
+      .carousel-control-prev,
+      .carousel-control-next {
+        width: 50px;
+        height: 50px;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        top: 50%;
+        transform: translateY(-50%);
+        opacity: 0.7;
+        transition: opacity 0.3s ease;
+      }
+
+      .carousel-control-prev:hover,
+      .carousel-control-next:hover {
+        opacity: 1;
+        background-color: rgba(255, 255, 255, 0.2);
+      }
+
+      .carousel-control-prev {
+        left: 20px;
+      }
+
+      .carousel-control-next {
+        right: 20px;
+      }
+
+      .btn-outline-light {
+        border: 2px solid var(--accent-color);
+        color: var(--accent-color);
+        padding: 10px 25px;
+        border-radius: 25px;
+        transition: all 0.3s ease;
+      }
+
+      .btn-outline-light:hover {
+        background-color: var(--accent-color);
+        color: var(--primary-color);
+        transform: translateY(-2px);
+      }
+    </style>
+  </head>
+  <body>
     <!-- Hero Section -->
     <section class="hero">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 hero-content">
-                    <h1>Voz que Conecta e Encanta</h1>
-                    <p>Locução e dublagem profissional para comerciais, institucionais, vídeos e personagens. Experiência que faz a diferença no seu projeto.</p>
-                    <div class="hero-buttons">
-                        <a href="#demos" class="btn-primary-custom">Ouvir Trabalho</a>
-                        <a href="#contato" class="btn-primary-custom">Solicitar Orçamento</a>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <!-- Espaço para imagem ou elemento visual -->
-                </div>
+      <div class="container">
+        <div class="row align-items-center">
+          <div class="col-lg-6 hero-content">
+            <h1>Voz que Conecta e Encanta</h1>
+            <p>
+              Locução e dublagem profissional para comerciais, institucionais,
+              vídeos e personagens. Experiência que faz a diferença no seu
+              projeto.
+            </p>
+            <div class="hero-buttons">
+              <a href="#demos" class="btn-primary-custom">Ouvir Trabalho</a>
+              <a href="#contato" class="btn-primary-custom"
+                >Solicitar Orçamento</a
+              >
             </div>
+          </div>
+          <div class="col-lg-6">
+            <!-- Espaço para imagem ou elemento visual -->
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Voice Demos Section -->
     <section id="demos" class="demos-section">
-        <div class="container">
-            <h2 class="section-title">Demonstrações de Voz</h2>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="demo-player">
-                        <h3 class="demo-title">Comercial - Energia</h3>
-                        <p>Locução dinâmica para comercial de empresa de energia.</p>
-                        <audio controls class="audio-player">
-                            <source src="#" type="audio/mpeg">
-                            Seu navegador não suporta o elemento de áudio.
-                        </audio>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="demo-player">
-                        <h3 class="demo-title">Institucional - Tecnologia</h3>
-                        <p>Voz corporativa para vídeo institucional de empresa de tecnologia.</p>
-                        <audio controls class="audio-player">
-                            <source src="#" type="audio/mpeg">
-                            Seu navegador não suporta o elemento de áudio.
-                        </audio>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="demo-player">
-                        <h3 class="demo-title">Documentário - Natureza</h3>
-                        <p>Narração envolvente para documentário sobre vida selvagem.</p>
-                        <audio controls class="audio-player">
-                            <source src="#" type="audio/mpeg">
-                            Seu navegador não suporta o elemento de áudio.
-                        </audio>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="demo-player">
-                        <h3 class="demo-title">Personagem - Animação</h3>
-                        <p>Dublagem expressiva para personagem de animação.</p>
-                        <audio controls class="audio-player">
-                            <source src="#" type="audio/mpeg">
-                            Seu navegador não suporta o elemento de áudio.
-                        </audio>
-                    </div>
-                </div>
+      <div class="container">
+        <h2 class="section-title">Demonstrações de Voz</h2>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="demo-player">
+              <h3 class="demo-title">Comercial - Energia</h3>
+              <p>Locução dinâmica para comercial de empresa de energia.</p>
+              <audio controls class="audio-player">
+                <source src="#" type="audio/mpeg" />
+                Seu navegador não suporta o elemento de áudio.
+              </audio>
             </div>
+          </div>
+          <div class="col-md-6">
+            <div class="demo-player">
+              <h3 class="demo-title">Institucional - Tecnologia</h3>
+              <p>
+                Voz corporativa para vídeo institucional de empresa de
+                tecnologia.
+              </p>
+              <audio controls class="audio-player">
+                <source src="#" type="audio/mpeg" />
+                Seu navegador não suporta o elemento de áudio.
+              </audio>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="demo-player">
+              <h3 class="demo-title">Documentário - Natureza</h3>
+              <p>Narração envolvente para documentário sobre vida selvagem.</p>
+              <audio controls class="audio-player">
+                <source src="#" type="audio/mpeg" />
+                Seu navegador não suporta o elemento de áudio.
+              </audio>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="demo-player">
+              <h3 class="demo-title">Personagem - Animação</h3>
+              <p>Dublagem expressiva para personagem de animação.</p>
+              <audio controls class="audio-player">
+                <source src="#" type="audio/mpeg" />
+                Seu navegador não suporta o elemento de áudio.
+              </audio>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Services Section -->
     <section id="servicos" class="services-section">
-        <div class="container">
-            <h2 class="section-title">Serviços</h2>
-            <div class="row">
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-microphone"></i>
-                        </div>
-                        <h3 class="service-title">Dublagem</h3>
-                        <p>Dublagem profissional para personagens de animação, games e séries, com interpretação fiel e sincronia perfeita.</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-tv"></i>
-                        </div>
-                        <h3 class="service-title">Comerciais</h3>
-                        <p>Locução para rádio, TV e mídias digitais, com tom adequado para cada público e objetivo da campanha.</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-building"></i>
-                        </div>
-                        <h3 class="service-title">Institucionais</h3>
-                        <p>Voz para vídeos corporativos, treinamentos e apresentações, transmitindo credibilidade e profissionalismo.</p>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 mb-4">
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-theater-masks"></i>
-                        </div>
-                        <h3 class="service-title">Personagens</h3>
-                        <p>Criação de vozes únicas para personagens, com interpretação que dá vida e personalidade a cada criação.</p>
-                    </div>
-                </div>
+      <div class="container">
+        <h2 class="section-title">Serviços</h2>
+        <div class="row">
+          <div class="col-lg-3 col-md-6 mb-4">
+            <div class="service-card">
+              <div class="service-icon">
+                <i class="fas fa-microphone"></i>
+              </div>
+              <h3 class="service-title">Dublagem</h3>
+              <p>
+                Dublagem profissional para personagens de animação, games e
+                séries, com interpretação fiel e sincronia perfeita.
+              </p>
             </div>
+          </div>
+          <div class="col-lg-3 col-md-6 mb-4">
+            <div class="service-card">
+              <div class="service-icon">
+                <i class="fas fa-tv"></i>
+              </div>
+              <h3 class="service-title">Comerciais</h3>
+              <p>
+                Locução para rádio, TV e mídias digitais, com tom adequado para
+                cada público e objetivo da campanha.
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 mb-4">
+            <div class="service-card">
+              <div class="service-icon">
+                <i class="fas fa-building"></i>
+              </div>
+              <h3 class="service-title">Institucionais</h3>
+              <p>
+                Voz para vídeos corporativos, treinamentos e apresentações,
+                transmitindo credibilidade e profissionalismo.
+              </p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 mb-4">
+            <div class="service-card">
+              <div class="service-icon">
+                <i class="fas fa-theater-masks"></i>
+              </div>
+              <h3 class="service-title">Personagens</h3>
+              <p>
+                Criação de vozes únicas para personagens, com interpretação que
+                dá vida e personalidade a cada criação.
+              </p>
+            </div>
+          </div>
         </div>
+      </div>
+    </section>
+
+    <!-- Dublagens e Locuções Section -->
+    <section id="dublagens" class="dublagens-section">
+      <div class="container">
+        <h2 class="section-title">Dublagens e Locuções</h2>
+        <p class="section-subtitle text-center mb-5">
+          Confira alguns dos meus trabalhos em dublagem e locução
+        </p>
+
+        <div
+          id="playlistCarousel"
+          class="carousel slide"
+          data-bs-ride="carousel"
+        >
+          <div class="carousel-inner">
+            <!-- Vídeo 1 -->
+            <div class="carousel-item active">
+              <div class="row justify-content-center">
+                <div class="col-lg-8">
+                  <div class="video-container">
+                    <div class="ratio ratio-16x9">
+                      <iframe
+                        src="https://www.youtube.com/embed/videoseries?list=PLP3uAQWHr1ZiXHmhIE3r3vMfQL7ZTSrE6&index=1"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen
+                      >
+                      </iframe>
+                    </div>
+                    <div class="video-info mt-3">
+                      <h4 class="video-title">Trabalho de Dublagem 1</h4>
+                      <p class="video-description">
+                        Demonstração de dublagem para personagem em animação.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Vídeo 2 -->
+            <div class="carousel-item">
+              <div class="row justify-content-center">
+                <div class="col-lg-8">
+                  <div class="video-container">
+                    <div class="ratio ratio-16x9">
+                      <iframe
+                        src="https://www.youtube.com/embed/videoseries?list=PLP3uAQWHr1ZiXHmhIE3r3vMfQL7ZTSrE6&index=2"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen
+                      >
+                      </iframe>
+                    </div>
+                    <div class="video-info mt-3">
+                      <h4 class="video-title">Trabalho de Locução 1</h4>
+                      <p class="video-description">
+                        Locução profissional para comercial institucional.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Vídeo 3 -->
+            <div class="carousel-item">
+              <div class="row justify-content-center">
+                <div class="col-lg-8">
+                  <div class="video-container">
+                    <div class="ratio ratio-16x9">
+                      <iframe
+                        src="https://www.youtube.com/embed/videoseries?list=PLP3uAQWHr1ZiXHmhIE3r3vMfQL7ZTSrE6&index=3"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen
+                      >
+                      </iframe>
+                    </div>
+                    <div class="video-info mt-3">
+                      <h4 class="video-title">Narração Documentário</h4>
+                      <p class="video-description">
+                        Narração para documentário com tom envolvente.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Controles do Carrossel -->
+          <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#playlistCarousel"
+            data-bs-slide="prev"
+          >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Anterior</span>
+          </button>
+          <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#playlistCarousel"
+            data-bs-slide="next"
+          >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Próximo</span>
+          </button>
+
+          <!-- Indicadores -->
+          <div class="carousel-indicators position-relative mt-4">
+            <button
+              type="button"
+              data-bs-target="#playlistCarousel"
+              data-bs-slide-to="0"
+              class="active"
+              aria-current="true"
+              aria-label="Slide 1"
+            ></button>
+            <button
+              type="button"
+              data-bs-target="#playlistCarousel"
+              data-bs-slide-to="1"
+              aria-label="Slide 2"
+            ></button>
+            <button
+              type="button"
+              data-bs-target="#playlistCarousel"
+              data-bs-slide-to="2"
+              aria-label="Slide 3"
+            ></button>
+          </div>
+        </div>
+
+        <div class="text-center mt-4">
+          <a
+            href="https://www.youtube.com/playlist?list=PLP3uAQWHr1ZiXHmhIE3r3vMfQL7ZTSrE6"
+            class="btn btn-outline-light"
+            target="_blank"
+          >
+            <i class="fab fa-youtube me-2"></i>Ver Playlist Completa
+          </a>
+        </div>
+      </div>
     </section>
 
     <!-- Testimonials Section -->
     <section id="depoimentos" class="testimonials-section">
-        <div class="container">
-            <h2 class="section-title">Depoimentos</h2>
-            <div id="testimonialCarousel" class="carousel slide testimonial-carousel" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <div class="testimonial-card">
-                            <p class="testimonial-text">Trabalhar com Soarinho foi uma experiência incrível. A entrega foi rápida, a qualidade excelente e a interpretação superou nossas expectativas.</p>
-                            <p class="testimonial-author">Mariana Silva</p>
-                            <p class="testimonial-role">Diretora de Criação, Agência Inovação</p>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="testimonial-card">
-                            <p class="testimonial-text">Profissionalismo e talento! A voz do Soarinho deu vida ao nosso personagem de forma única. Recomendo sem hesitar.</p>
-                            <p class="testimonial-author">Ricardo Almeida</p>
-                            <p class="testimonial-role">Produtor, Estúdio Animação</p>
-                        </div>
-                    </div>
-                    <div class="carousel-item">
-                        <div class="testimonial-card">
-                            <p class="testimonial-text">A locução para nosso vídeo institucional ficou perfeita. Tom adequado, clareza e emoção na medida certa. Parabéns!</p>
-                            <p class="testimonial-author">Carla Mendes</p>
-                            <p class="testimonial-role">Gerente de Marketing, TechSolutions</p>
-                        </div>
-                    </div>
-                </div>
-                <button class="carousel-control-prev" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Anterior</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#testimonialCarousel" data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Próximo</span>
-                </button>
+      <div class="container">
+        <h2 class="section-title">Depoimentos</h2>
+        <div
+          id="testimonialCarousel"
+          class="carousel slide testimonial-carousel"
+          data-bs-ride="carousel"
+        >
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+              <div class="testimonial-card">
+                <p class="testimonial-text">
+                  Trabalhar com Soarinho foi uma experiência incrível. A entrega
+                  foi rápida, a qualidade excelente e a interpretação superou
+                  nossas expectativas.
+                </p>
+                <p class="testimonial-author">Mariana Silva</p>
+                <p class="testimonial-role">
+                  Diretora de Criação, Agência Inovação
+                </p>
+              </div>
             </div>
+            <div class="carousel-item">
+              <div class="testimonial-card">
+                <p class="testimonial-text">
+                  Profissionalismo e talento! A voz do Soarinho deu vida ao
+                  nosso personagem de forma única. Recomendo sem hesitar.
+                </p>
+                <p class="testimonial-author">Ricardo Almeida</p>
+                <p class="testimonial-role">Produtor, Estúdio Animação</p>
+              </div>
+            </div>
+            <div class="carousel-item">
+              <div class="testimonial-card">
+                <p class="testimonial-text">
+                  A locução para nosso vídeo institucional ficou perfeita. Tom
+                  adequado, clareza e emoção na medida certa. Parabéns!
+                </p>
+                <p class="testimonial-author">Carla Mendes</p>
+                <p class="testimonial-role">
+                  Gerente de Marketing, TechSolutions
+                </p>
+              </div>
+            </div>
+          </div>
+          <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#testimonialCarousel"
+            data-bs-slide="prev"
+          >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Anterior</span>
+          </button>
+          <button
+            class="carousel-control-next"
+            type="button"
+            data-bs-target="#testimonialCarousel"
+            data-bs-slide="next"
+          >
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Próximo</span>
+          </button>
         </div>
+      </div>
     </section>
 
     <!-- CTA Section -->
     <section id="contato" class="cta-section">
-        <div class="container">
-            <h2 class="cta-title">Pronto para dar voz ao seu projeto?</h2>
-            <p class="cta-description">Entre em contato agora mesmo para solicitar um orçamento personalizado. Respondo rapidamente e garanto qualidade profissional em cada trabalho.</p>
-            <a href="https://wa.me/5511999999999?text=Olá! Gostaria de solicitar um orçamento para locução/dublagem." class="whatsapp-btn" target="_blank">
-                <i class="fab fa-whatsapp"></i> Fale pelo WhatsApp
-            </a>
-        </div>
+      <div class="container">
+        <h2 class="cta-title">Pronto para dar voz ao seu projeto?</h2>
+        <p class="cta-description">
+          Entre em contato agora mesmo para solicitar um orçamento
+          personalizado. Respondo rapidamente e garanto qualidade profissional
+          em cada trabalho.
+        </p>
+        <a
+          href="https://wa.me/5511999999999?text=Olá! Gostaria de solicitar um orçamento para locução/dublagem."
+          class="whatsapp-btn"
+          target="_blank"
+        >
+          <i class="fab fa-whatsapp"></i> Fale pelo WhatsApp
+        </a>
+      </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 mb-4">
-                    <div class="footer-logo">Soarinho</div>
-                    <p>Locução e dublagem profissional para projetos que exigem qualidade e expressividade.</p>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <h5>Links Rápidos</h5>
-                    <div class="footer-links">
-                        <a href="#demos">Demonstrações</a>
-                        <a href="#servicos">Serviços</a>
-                        <a href="#depoimentos">Depoimentos</a>
-                        <a href="#contato">Contato</a>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <h5>Conecte-se</h5>
-                    <div class="social-icons">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                        <a href="#"><i class="fab fa-soundcloud"></i></a>
-                    </div>
-                </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 mb-4">
+            <div class="footer-logo">Soarinho</div>
+            <p>
+              Locução e dublagem profissional para projetos que exigem qualidade
+              e expressividade.
+            </p>
+          </div>
+          <div class="col-md-4 mb-4">
+            <h5>Links Rápidos</h5>
+            <div class="footer-links">
+              <a href="#demos">Demonstrações</a>
+              <a href="#servicos">Serviços</a>
+              <a href="#depoimentos">Depoimentos</a>
+              <a href="#contato">Contato</a>
             </div>
-            <div class="row">
-                <div class="col-12 text-center copyright">
-                    <p>&copy; 2023 Soarinho - Locução e Dublagem. Todos os direitos reservados.</p>
-                </div>
+          </div>
+          <div class="col-md-4 mb-4">
+            <h5>Conecte-se</h5>
+            <div class="social-icons">
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-linkedin"></i></a>
+              <a href="#"><i class="fab fa-youtube"></i></a>
+              <a href="#"><i class="fab fa-soundcloud"></i></a>
             </div>
+          </div>
         </div>
+        <div class="row">
+          <div class="col-12 text-center copyright">
+            <p>
+              &copy; 2023 Soarinho - Locução e Dublagem. Todos os direitos
+              reservados.
+            </p>
+          </div>
+        </div>
+      </div>
     </footer>
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        // Smooth scrolling
-        $(document).ready(function(){
-            $("a").on('click', function(event) {
-                if (this.hash !== "") {
-                    event.preventDefault();
-                    var hash = this.hash;
-                    $('html, body').animate({
-                        scrollTop: $(hash).offset().top
-                    }, 800, function(){
-                        window.location.hash = hash;
-                    });
-                }
-            });
+      // Smooth scrolling
+      $(document).ready(function () {
+        $("a").on("click", function (event) {
+          if (this.hash !== "") {
+            event.preventDefault();
+            var hash = this.hash;
+            $("html, body").animate(
+              {
+                scrollTop: $(hash).offset().top,
+              },
+              800,
+              function () {
+                window.location.hash = hash;
+              }
+            );
+          }
         });
-        
-        // Audio player enhancement
-        document.addEventListener('DOMContentLoaded', function() {
-            const audioPlayers = document.querySelectorAll('audio');
-            
-            audioPlayers.forEach(player => {
-                player.addEventListener('play', function() {
-                    // Pausar outros players quando um começar a tocar
-                    audioPlayers.forEach(otherPlayer => {
-                        if (otherPlayer !== player && !otherPlayer.paused) {
-                            otherPlayer.pause();
-                        }
-                    });
-                });
+      });
+
+      // Audio player enhancement
+      document.addEventListener("DOMContentLoaded", function () {
+        const audioPlayers = document.querySelectorAll("audio");
+
+        audioPlayers.forEach((player) => {
+          player.addEventListener("play", function () {
+            // Pausar outros players quando um começar a tocar
+            audioPlayers.forEach((otherPlayer) => {
+              if (otherPlayer !== player && !otherPlayer.paused) {
+                otherPlayer.pause();
+              }
             });
+          });
         });
+      });
     </script>
-</body>
+  </body>
 </html>
