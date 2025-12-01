@@ -1,6 +1,6 @@
-# Soarinho Voz
+# Voz
 
-Site do serviço de locução e dublagem profissional.
+Site do serviço de locução e dublagem profissional oferecido por Soarinho.
 
 ## 🌐 Acesso
 
