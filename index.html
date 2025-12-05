@@ -399,6 +399,43 @@
             transform: scale(1.1);
             box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
         }
+        
+        /* Button Glow Effects */
+        .btn-glow {
+            background: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            color: #ffffff !important;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-glow::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: 0.5s;
+        }
+        
+        .btn-glow:hover::after {
+            left: 100%;
+        }
+        
+        .btn-glow:hover {
+            background: rgba(255, 255, 255, 0.25);
+            color: #ffffff !important;
+            border-color: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.6);
+            transform: translateY(-3px);
+        }
+        
+        .btn-primary-glow {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
     </style>
 </head>
 <body class="bg-dark-900 text-dark-100 font-inter overflow-x-hidden">
@@ -814,21 +851,46 @@
         </div>
     </section>
 
-    <!-- CTA Section -->
+    <!-- Contact Section -->
     <section id="contato" class="py-20 md:py-32 bg-dark-800 relative">
         <div class="container mx-auto px-4">
-            <div class="max-w-4xl mx-auto text-center reveal">
-                <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">Pronto para dar voz ao seu projeto?</h2>
-                <p class="text-dark-200 text-lg md:text-xl mb-10 max-w-2xl mx-auto leading-relaxed">
-                    Entre em contato agora mesmo para solicitar um orçamento personalizado. Respondo rapidamente e garanto qualidade profissional em cada trabalho.
-                </p>
-                <a href="https://wa.me/5524998540552?text=Olá! Gostaria de solicitar um orçamento para locução/dublagem." class="whatsapp-btn py-4 px-10 rounded-full font-bold text-lg inline-flex items-center" target="_blank">
-                    <i class="fab fa-whatsapp mr-2 text-2xl"></i>
-                    Fale pelo WhatsApp
-                </a>
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">Entre em Contato</h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-transparent via-white to-transparent mx-auto"></div>
+            </div>
+            
+            <div class="max-w-3xl mx-auto reveal">
+                <div class="card-effect rounded-3xl p-8 md:p-12">
+                    <form id="contactForm" class="space-y-6" action="mailto:contato@soarinho.com" method="post" enctype="text/plain">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <input type="text" name="name" class="w-full px-4 py-3 bg-dark-700 border border-dark-600 rounded-lg focus:outline-none focus:border-white transition-all text-white placeholder-dark-400" placeholder="Seu nome" required>
+                            </div>
+                            <div>
+                                <input type="email" name="email" class="w-full px-4 py-3 bg-dark-700 border border-dark-600 rounded-lg focus:outline-none focus:border-white transition-all text-white placeholder-dark-400" placeholder="Seu e-mail" required>
+                            </div>
+                        </div>
+                        <div>
+                            <input type="text" name="subject" class="w-full px-4 py-3 bg-dark-700 border border-dark-600 rounded-lg focus:outline-none focus:border-white transition-all text-white placeholder-dark-400" placeholder="Assunto">
+                        </div>
+                        <div>
+                            <textarea name="message" rows="5" class="w-full px-4 py-3 bg-dark-700 border border-dark-600 rounded-lg focus:outline-none focus:border-white transition-all text-white placeholder-dark-400 resize-none" placeholder="Sua mensagem" required></textarea>
+                        </div>
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                            <button type="submit" class="btn-glow btn-primary-glow py-4 px-8 rounded-full font-semibold text-lg">
+                                <i class="fas fa-paper-plane mr-2"></i>
+                                Enviar Mensagem
+                            </button>
+                            <a href="https://wa.me/5524998540552?text=Olá! Gostaria de solicitar um orçamento para locução/dublagem." class="btn-glow py-4 px-8 rounded-full font-semibold text-lg inline-flex items-center justify-center" target="_blank">
+                                <i class="fab fa-whatsapp mr-2"></i>
+                                WhatsApp
+                            </a>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
-        </section>
+    </section>
     </main>
 
     <!-- Footer -->
@@ -990,6 +1052,16 @@
                 cursor.style.top = e.clientY + 'px';
                 cursorDot.style.left = e.clientX + 'px';
                 cursorDot.style.top = e.clientY + 'px';
+            });
+        }
+        
+        // Form submission
+        const contactForm = document.getElementById('contactForm');
+        if (contactForm) {
+            contactForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Obrigado pelo seu interesse! Entrarei em contato em breve.');
+                this.reset();
             });
         }
     </script>
