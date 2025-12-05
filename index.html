@@ -172,20 +172,6 @@
             background: linear-gradient(135deg, rgba(20, 20, 20, 0.85), rgba(10, 10, 10, 0.85));
         }
 
-        .audio-player-wrap {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 16px;
-            padding: 12px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-        }
-
-        .audio-player {
-            width: 100%;
-            height: 48px;
-            border-radius: 12px;
-            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.35));
-        }
 
         .audio-badge {
             display: inline-flex;
@@ -268,15 +254,142 @@
             transform: translateY(0);
         }
         
-        .audio-player {
-            width: 100%;
-            background-color: rgba(10, 10, 10, 0.5);
-            border-radius: 50px;
-            border: 1px solid rgba(74, 74, 74, 0.5);
+        /* Player de áudio customizado moderno */
+        .custom-audio-player {
+            background: linear-gradient(135deg, rgba(30, 30, 30, 0.95), rgba(20, 20, 20, 0.95));
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 20px;
+            padding: 20px 24px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+            transition: all 0.3s ease;
         }
-        
-        .audio-player::-webkit-media-controls-panel {
-            background-color: rgba(10, 10, 10, 0.8);
+
+        .custom-audio-player:hover {
+            border-color: rgba(255, 255, 255, 0.25);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+        }
+
+        .player-controls {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 12px;
+        }
+
+        .play-pause-btn {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.1));
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .play-pause-btn:hover {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.25), rgba(255, 255, 255, 0.15));
+            border-color: rgba(255, 255, 255, 0.5);
+            transform: scale(1.05);
+            box-shadow: 0 4px 20px rgba(255, 255, 255, 0.2);
+        }
+
+        .play-pause-btn:active {
+            transform: scale(0.95);
+        }
+
+        .player-info {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .player-title {
+            color: white;
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 4px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .player-time {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .progress-container {
+            position: relative;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 12px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.6));
+            border-radius: 10px;
+            width: 0%;
+            transition: width 0.1s linear;
+            position: relative;
+        }
+
+        .progress-bar::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 16px;
+            height: 16px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .volume-control {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .volume-icon {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 16px;
+            width: 20px;
+        }
+
+        .volume-slider {
+            flex: 1;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .volume-fill {
+            height: 100%;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 10px;
+            width: 100%;
+            transition: width 0.1s linear;
+        }
+
+        .hidden-audio {
+            display: none;
         }
     </style>
 </head>
@@ -387,10 +500,31 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="audio-player-wrap">
-                            <audio controls class="audio-player">
+                        <div class="custom-audio-player" data-audio-src="https://soarinho.com/recordings/energy.m4a">
+                            <div class="player-controls">
+                                <button class="play-pause-btn" aria-label="Play/Pause">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                                <div class="player-info">
+                                    <div class="player-title">Comercial - Energia</div>
+                                    <div class="player-time">
+                                        <span class="current-time">0:00</span>
+                                        <span>/</span>
+                                        <span class="total-time">0:00</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="progress-container">
+                                <div class="progress-bar"></div>
+                            </div>
+                            <div class="volume-control">
+                                <i class="fas fa-volume-up volume-icon"></i>
+                                <div class="volume-slider">
+                                    <div class="volume-fill"></div>
+                                </div>
+                            </div>
+                            <audio class="hidden-audio" preload="metadata">
                                 <source src="https://soarinho.com/recordings/energy.m4a" type="audio/mpeg" />
-                                Seu navegador não suporta o elemento de áudio.
                             </audio>
                         </div>
                     </div>
@@ -411,10 +545,31 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="audio-player-wrap">
-                            <audio controls class="audio-player">
+                        <div class="custom-audio-player" data-audio-src="https://soarinho.com/recordings/technology.m4a">
+                            <div class="player-controls">
+                                <button class="play-pause-btn" aria-label="Play/Pause">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                                <div class="player-info">
+                                    <div class="player-title">Institucional - Tecnologia</div>
+                                    <div class="player-time">
+                                        <span class="current-time">0:00</span>
+                                        <span>/</span>
+                                        <span class="total-time">0:00</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="progress-container">
+                                <div class="progress-bar"></div>
+                            </div>
+                            <div class="volume-control">
+                                <i class="fas fa-volume-up volume-icon"></i>
+                                <div class="volume-slider">
+                                    <div class="volume-fill"></div>
+                                </div>
+                            </div>
+                            <audio class="hidden-audio" preload="metadata">
                                 <source src="https://soarinho.com/recordings/technology.m4a" type="audio/mpeg" />
-                                Seu navegador não suporta o elemento de áudio.
                             </audio>
                         </div>
                     </div>
@@ -435,10 +590,31 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="audio-player-wrap">
-                            <audio controls class="audio-player">
+                        <div class="custom-audio-player" data-audio-src="https://soarinho.com/recordings/documentary.m4a">
+                            <div class="player-controls">
+                                <button class="play-pause-btn" aria-label="Play/Pause">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                                <div class="player-info">
+                                    <div class="player-title">Documentário - Natureza</div>
+                                    <div class="player-time">
+                                        <span class="current-time">0:00</span>
+                                        <span>/</span>
+                                        <span class="total-time">0:00</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="progress-container">
+                                <div class="progress-bar"></div>
+                            </div>
+                            <div class="volume-control">
+                                <i class="fas fa-volume-up volume-icon"></i>
+                                <div class="volume-slider">
+                                    <div class="volume-fill"></div>
+                                </div>
+                            </div>
+                            <audio class="hidden-audio" preload="metadata">
                                 <source src="https://soarinho.com/recordings/documentary.m4a" type="audio/mpeg" />
-                                Seu navegador não suporta o elemento de áudio.
                             </audio>
                         </div>
                     </div>
@@ -459,10 +635,31 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="audio-player-wrap">
-                            <audio controls class="audio-player">
+                        <div class="custom-audio-player" data-audio-src="https://soarinho.com/recordings/dubbing.m4a">
+                            <div class="player-controls">
+                                <button class="play-pause-btn" aria-label="Play/Pause">
+                                    <i class="fas fa-play"></i>
+                                </button>
+                                <div class="player-info">
+                                    <div class="player-title">Personagem - Animação</div>
+                                    <div class="player-time">
+                                        <span class="current-time">0:00</span>
+                                        <span>/</span>
+                                        <span class="total-time">0:00</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="progress-container">
+                                <div class="progress-bar"></div>
+                            </div>
+                            <div class="volume-control">
+                                <i class="fas fa-volume-up volume-icon"></i>
+                                <div class="volume-slider">
+                                    <div class="volume-fill"></div>
+                                </div>
+                            </div>
+                            <audio class="hidden-audio" preload="metadata">
                                 <source src="https://soarinho.com/recordings/dubbing.m4a" type="audio/mpeg" />
-                                Seu navegador não suporta o elemento de áudio.
                             </audio>
                         </div>
                     </div>
@@ -736,19 +933,102 @@
             });
         });
 
-        // Audio player enhancement
-        document.addEventListener("DOMContentLoaded", function () {
-            const audioPlayers = document.querySelectorAll("audio");
-
-            audioPlayers.forEach((player) => {
-                player.addEventListener("play", function () {
-                    // Pausar outros players quando um começar a tocar
-                    audioPlayers.forEach((otherPlayer) => {
-                        if (otherPlayer !== player && !otherPlayer.paused) {
-                            otherPlayer.pause();
+        // Custom Audio Players
+        document.querySelectorAll('.custom-audio-player').forEach(player => {
+            const audio = player.querySelector('.hidden-audio');
+            const playPauseBtn = player.querySelector('.play-pause-btn');
+            const playIcon = playPauseBtn.querySelector('i');
+            const progressBar = player.querySelector('.progress-bar');
+            const progressContainer = player.querySelector('.progress-container');
+            const currentTimeEl = player.querySelector('.current-time');
+            const totalTimeEl = player.querySelector('.total-time');
+            const volumeSlider = player.querySelector('.volume-slider');
+            const volumeFill = player.querySelector('.volume-fill');
+            const volumeIcon = player.querySelector('.volume-icon');
+            
+            // Formatar tempo
+            function formatTime(seconds) {
+                if (isNaN(seconds) || !isFinite(seconds)) return '0:00';
+                const mins = Math.floor(seconds / 60);
+                const secs = Math.floor(seconds % 60);
+                return `${mins}:${secs.toString().padStart(2, '0')}`;
+            }
+            
+            // Atualizar tempo total
+            audio.addEventListener('loadedmetadata', () => {
+                totalTimeEl.textContent = formatTime(audio.duration);
+                audio.volume = 1;
+                volumeFill.style.width = '100%';
+            });
+            
+            // Atualizar progresso
+            audio.addEventListener('timeupdate', () => {
+                if (audio.duration) {
+                    const progress = (audio.currentTime / audio.duration) * 100;
+                    progressBar.style.width = progress + '%';
+                    currentTimeEl.textContent = formatTime(audio.currentTime);
+                }
+            });
+            
+            // Play/Pause
+            playPauseBtn.addEventListener('click', () => {
+                if (audio.paused) {
+                    // Pausar outros players
+                    document.querySelectorAll('.hidden-audio').forEach(otherAudio => {
+                        if (otherAudio !== audio && !otherAudio.paused) {
+                            otherAudio.pause();
+                            const otherPlayer = otherAudio.closest('.custom-audio-player');
+                            if (otherPlayer) {
+                                const otherIcon = otherPlayer.querySelector('.play-pause-btn i');
+                                if (otherIcon) {
+                                    otherIcon.classList.remove('fa-pause');
+                                    otherIcon.classList.add('fa-play');
+                                }
+                            }
                         }
                     });
-                });
+                    audio.play();
+                    playIcon.classList.remove('fa-play');
+                    playIcon.classList.add('fa-pause');
+                } else {
+                    audio.pause();
+                    playIcon.classList.remove('fa-pause');
+                    playIcon.classList.add('fa-play');
+                }
+            });
+            
+            // Clique na barra de progresso
+            progressContainer.addEventListener('click', (e) => {
+                const rect = progressContainer.getBoundingClientRect();
+                const percent = (e.clientX - rect.left) / rect.width;
+                audio.currentTime = percent * audio.duration;
+            });
+            
+            // Controle de volume
+            volumeSlider.addEventListener('click', (e) => {
+                const rect = volumeSlider.getBoundingClientRect();
+                const percent = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
+                audio.volume = percent;
+                volumeFill.style.width = (percent * 100) + '%';
+                
+                if (audio.volume === 0) {
+                    volumeIcon.classList.remove('fa-volume-up', 'fa-volume-down');
+                    volumeIcon.classList.add('fa-volume-mute');
+                } else if (audio.volume < 0.5) {
+                    volumeIcon.classList.remove('fa-volume-up', 'fa-volume-mute');
+                    volumeIcon.classList.add('fa-volume-down');
+                } else {
+                    volumeIcon.classList.remove('fa-volume-down', 'fa-volume-mute');
+                    volumeIcon.classList.add('fa-volume-up');
+                }
+            });
+            
+            // Quando o áudio termina
+            audio.addEventListener('ended', () => {
+                playIcon.classList.remove('fa-pause');
+                playIcon.classList.add('fa-play');
+                progressBar.style.width = '0%';
+                currentTimeEl.textContent = '0:00';
             });
         });
 
