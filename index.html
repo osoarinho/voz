@@ -358,35 +358,6 @@
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
         }
 
-        .volume-control {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            margin-top: 12px;
-        }
-
-        .volume-icon {
-            color: rgba(255, 255, 255, 0.7);
-            font-size: 16px;
-            width: 20px;
-        }
-
-        .volume-slider {
-            flex: 1;
-            height: 4px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            cursor: pointer;
-            position: relative;
-        }
-
-        .volume-fill {
-            height: 100%;
-            background: rgba(255, 255, 255, 0.6);
-            border-radius: 10px;
-            width: 100%;
-            transition: width 0.1s linear;
-        }
 
         .hidden-audio {
             display: none;
@@ -494,10 +465,6 @@
                             <div class="flex-1">
                                 <h3 class="text-xl md:text-2xl font-bold text-white mb-1">Comercial - Energia</h3>
                                 <p class="text-dark-300 mb-2 text-sm md:text-base">Locuções para campanhas de energia e utilidades.</p>
-                                <div class="flex flex-wrap gap-2">
-                                    <span class="audio-badge"><i class="fas fa-microphone-alt"></i> PT-BR</span>
-                                    <span class="audio-badge"><i class="fas fa-broadcast-tower"></i> Rádio/TV</span>
-                                </div>
                             </div>
                         </div>
                         <div class="custom-audio-player" data-audio-src="https://soarinho.com/recordings/energy.m4a">
@@ -517,12 +484,6 @@
                             <div class="progress-container">
                                 <div class="progress-bar"></div>
                             </div>
-                            <div class="volume-control">
-                                <i class="fas fa-volume-up volume-icon"></i>
-                                <div class="volume-slider">
-                                    <div class="volume-fill"></div>
-                                </div>
-                            </div>
                             <audio class="hidden-audio" preload="metadata">
                                 <source src="https://soarinho.com/recordings/energy.m4a" type="audio/mpeg" />
                             </audio>
@@ -539,10 +500,6 @@
                             <div class="flex-1">
                                 <h3 class="text-xl md:text-2xl font-bold text-white mb-1">Institucional - Tecnologia</h3>
                                 <p class="text-dark-300 mb-2 text-sm md:text-base">Voz corporativa para vídeos institucionais de tecnologia.</p>
-                                <div class="flex flex-wrap gap-2">
-                                    <span class="audio-badge"><i class="fas fa-briefcase"></i> Corporativo</span>
-                                    <span class="audio-badge"><i class="fas fa-laptop-code"></i> Tech</span>
-                                </div>
                             </div>
                         </div>
                         <div class="custom-audio-player" data-audio-src="https://soarinho.com/recordings/technology.m4a">
@@ -562,12 +519,6 @@
                             <div class="progress-container">
                                 <div class="progress-bar"></div>
                             </div>
-                            <div class="volume-control">
-                                <i class="fas fa-volume-up volume-icon"></i>
-                                <div class="volume-slider">
-                                    <div class="volume-fill"></div>
-                                </div>
-                            </div>
                             <audio class="hidden-audio" preload="metadata">
                                 <source src="https://soarinho.com/recordings/technology.m4a" type="audio/mpeg" />
                             </audio>
@@ -584,10 +535,6 @@
                             <div class="flex-1">
                                 <h3 class="text-xl md:text-2xl font-bold text-white mb-1">Documentário - Natureza</h3>
                                 <p class="text-dark-300 mb-2 text-sm md:text-base">Narração imersiva para vida selvagem e natureza.</p>
-                                <div class="flex flex-wrap gap-2">
-                                    <span class="audio-badge"><i class="fas fa-film"></i> Doc</span>
-                                    <span class="audio-badge"><i class="fas fa-leaf"></i> Natureza</span>
-                                </div>
                             </div>
                         </div>
                         <div class="custom-audio-player" data-audio-src="https://soarinho.com/recordings/documentary.m4a">
@@ -607,12 +554,6 @@
                             <div class="progress-container">
                                 <div class="progress-bar"></div>
                             </div>
-                            <div class="volume-control">
-                                <i class="fas fa-volume-up volume-icon"></i>
-                                <div class="volume-slider">
-                                    <div class="volume-fill"></div>
-                                </div>
-                            </div>
                             <audio class="hidden-audio" preload="metadata">
                                 <source src="https://soarinho.com/recordings/documentary.m4a" type="audio/mpeg" />
                             </audio>
@@ -629,10 +570,6 @@
                             <div class="flex-1">
                                 <h3 class="text-xl md:text-2xl font-bold text-white mb-1">Personagem - Animação, Live Action, Audiolivros</h3>
                                 <p class="text-dark-300 mb-2 text-sm md:text-base">Dublagens expressivas com interpretação e emoção.</p>
-                                <div class="flex flex-wrap gap-2">
-                                    <span class="audio-badge"><i class="fas fa-headphones-alt"></i> Voz Ator</span>
-                                    <span class="audio-badge"><i class="fas fa-book"></i> Audiolivro</span>
-                                </div>
                             </div>
                         </div>
                         <div class="custom-audio-player" data-audio-src="https://soarinho.com/recordings/dubbing.m4a">
@@ -651,12 +588,6 @@
                             </div>
                             <div class="progress-container">
                                 <div class="progress-bar"></div>
-                            </div>
-                            <div class="volume-control">
-                                <i class="fas fa-volume-up volume-icon"></i>
-                                <div class="volume-slider">
-                                    <div class="volume-fill"></div>
-                                </div>
                             </div>
                             <audio class="hidden-audio" preload="metadata">
                                 <source src="https://soarinho.com/recordings/dubbing.m4a" type="audio/mpeg" />
@@ -942,9 +873,6 @@
             const progressContainer = player.querySelector('.progress-container');
             const currentTimeEl = player.querySelector('.current-time');
             const totalTimeEl = player.querySelector('.total-time');
-            const volumeSlider = player.querySelector('.volume-slider');
-            const volumeFill = player.querySelector('.volume-fill');
-            const volumeIcon = player.querySelector('.volume-icon');
             
             // Formatar tempo
             function formatTime(seconds) {
@@ -958,7 +886,6 @@
             audio.addEventListener('loadedmetadata', () => {
                 totalTimeEl.textContent = formatTime(audio.duration);
                 audio.volume = 1;
-                volumeFill.style.width = '100%';
             });
             
             // Atualizar progresso
@@ -1002,25 +929,6 @@
                 const rect = progressContainer.getBoundingClientRect();
                 const percent = (e.clientX - rect.left) / rect.width;
                 audio.currentTime = percent * audio.duration;
-            });
-            
-            // Controle de volume
-            volumeSlider.addEventListener('click', (e) => {
-                const rect = volumeSlider.getBoundingClientRect();
-                const percent = Math.max(0, Math.min(1, (e.clientX - rect.left) / rect.width));
-                audio.volume = percent;
-                volumeFill.style.width = (percent * 100) + '%';
-                
-                if (audio.volume === 0) {
-                    volumeIcon.classList.remove('fa-volume-up', 'fa-volume-down');
-                    volumeIcon.classList.add('fa-volume-mute');
-                } else if (audio.volume < 0.5) {
-                    volumeIcon.classList.remove('fa-volume-up', 'fa-volume-mute');
-                    volumeIcon.classList.add('fa-volume-down');
-                } else {
-                    volumeIcon.classList.remove('fa-volume-down', 'fa-volume-mute');
-                    volumeIcon.classList.add('fa-volume-up');
-                }
             });
             
             // Quando o áudio termina
